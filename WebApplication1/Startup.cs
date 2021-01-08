@@ -53,12 +53,14 @@ namespace WebApplication1
 
         private RequestDelegate DisplayCommit(RequestDelegate next)
         {
-            var environment = Environment.GetEnvironmentVariable("COMMIT");
+            var commit = Environment.GetEnvironmentVariable("COMMIT");
+            var commitMessage = Environment.GetEnvironmentVariable("COMMIT_MESSAGE");
             return async ctx =>
             {
                 if (ctx.Request.Path.StartsWithSegments("/commit"))
                 {
-                    await ctx.Response.WriteAsync(environment);
+                    await ctx.Response.WriteAsync(commit + "\n");
+                    await ctx.Response.WriteAsync(commitMessage);
                 }
                 else
                 {
