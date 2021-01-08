@@ -33,3 +33,4 @@ steps:
     WebAppName: 'tbs-commit'
     packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
     RuntimeStack: 'DOTNETCORE|3.1'
+    AppSettings: '-COMMIT $(Build.SourceVersion) -COMMIT_MESSAGE ''$(Build.SourceVersionMessage)'''
